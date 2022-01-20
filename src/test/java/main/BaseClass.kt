@@ -6,11 +6,15 @@ import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.remote.AndroidMobileCapabilityType
 import io.appium.java_client.remote.MobileCapabilityType
+import io.appium.java_client.touch.WaitOptions
+import io.appium.java_client.touch.offset.PointOption
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.testng.annotations.AfterSuite
 import org.testng.annotations.BeforeSuite
 import org.testng.annotations.Test
+import utils.PlatformTouchAction
 import java.net.URL
+import java.time.Duration
 import java.util.concurrent.TimeUnit
 
 class BaseClass {
@@ -92,6 +96,22 @@ class BaseClass {
         element7 = driver.findElement(MobileBy.id("ru.sportmaster.app.handh.dev:id/profile_graph")) //поиск элемента по локатору
         element7.click() //тап по табу Профиль
         println("Переход по табу в профиль прошел успешно")
+
+        // Переход в редактирование профиля
+        lateinit var element8: MobileElement //создаем элемент MobileElement
+        element8 = driver.findElement(MobileBy.id("ru.sportmaster.app.handh.dev:id/buttonEditProfile")) //поиск элемента по локатору
+        element8.click() //тап по иконке
+
+        PlatformTouchAction(driver)
+            .longPress(PointOption.point(10, 1000))
+            .moveTo(PointOption.point(10, 100))
+            .release()
+            .perform()
+
+//        lateinit var element9: MobileElement //создаем элемент MobileElement
+//        element9 = driver.findElement(MobileBy.id("ru.sportmaster.app.handh.dev:id/buttonLogout"))
+//        element9.click()
+
 
 
         TimeUnit.SECONDS.sleep(5)
