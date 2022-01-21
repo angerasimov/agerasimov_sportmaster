@@ -3,7 +3,7 @@ package tests
 import constructor_classes.locatorsTypes
 import io.appium.java_client.MobileBy
 import io.appium.java_client.MobileElement
-import locators.SplashScreenLocators
+import locators.*
 import main.TestMethods
 import org.testng.annotations.Test
 import java.util.concurrent.TimeUnit
@@ -29,33 +29,33 @@ class TestOne: TestMethods() {
         // Ввод номера телефона в поле
         inputTextInField(
             locatorType = locatorsTypes.id,
-            locator = "ru.sportmaster.app.handh.dev:id/editTextPhone",
+            locator = AuthorizationScreenLocators().inputFieldInAuthScreen.androidId,
             inputText = "9999999969"
         )
 
         // Клик по кнопке авторизации
         clickToElement(
             locatorType = locatorsTypes.id,
-            locator = "ru.sportmaster.app.handh.dev:id/buttonGetCode"
+            locator = AuthorizationScreenLocators().getcodeButtonInAuthScreen.androidId
         )
 
         // Ввод кода
         inputTextInField(
             locatorType = locatorsTypes.id,
-            locator = "ru.sportmaster.app.handh.dev:id/pinCodeEditText",
+            locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.androidId,
             inputText = "1111"
         )
 
         // Даем добро на местоположение
         clickToElement(
             locatorType = locatorsTypes.id,
-            locator = "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
+            locator = PermissionsLocators().whenUsingAppButtonInPermissionGeolocation.androidId
         )
 
         // Подтверждение города
         clickToElement(
             locatorType = locatorsTypes.id,
-            locator = "android:id/button1"
+            locator = AlertsLocators().yesButtonInConfirmationCityAlert.androidId
         )
 
         // Переход по табу в профиль

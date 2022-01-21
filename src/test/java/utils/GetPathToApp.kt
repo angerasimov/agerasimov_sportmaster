@@ -16,8 +16,8 @@ class GetPathToApp {
             appName = name
         name.startsWith("sportmaster")
     }
-    val fullLocalAppLocalPathIOS = "/Users/$USER_NAME/apps/Spormaster_ios/$appName"
-    val fullAppLocalPathAndroid = "/Users/$USER_NAME/apps/Spormaster_android/$apkName"
+    val fullLocalAppLocalPathIOS = "/Users/$USER_NAME/apps/Sportmaster_ios/$appName"
+    val fullAppLocalPathAndroid = "/Users/$USER_NAME/apps/Sportmaster_android/$apkName"
     val fullAppCiPathAndroid = ""
     val fullAppCiPathIOS = ""
 
@@ -32,4 +32,3 @@ class GetPathToApp {
 }
 
 val appPath = GetPathToApp()
-}
