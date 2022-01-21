@@ -58,27 +58,29 @@ class TestOne: TestMethods() {
             locator = AlertsLocators().yesButtonInConfirmationCityAlert.androidId
         )
 
-        // Переход по табу в профиль
+        // Переход по табу в меню профиля
         clickToElement(
             locatorType = locatorsTypes.id,
-            locator = "ru.sportmaster.app.handh.dev:id/profile_graph"
+            locator = NavbarLocators().profileTab.androidId
         )
 
         // Переход в редактирование профиля
         clickToElement(
             locatorType = locatorsTypes.id,
-            locator = "ru.sportmaster.app.handh.dev:id/buttonEditProfile"
+            locator = ProfileMenuScreenLocators().editButtonOnProfileMenuScreen.androidId
         )
 
-//        swipeOnScreen(
-//            startCordX = 10,
-//            startCordY = 23,
-//            moveCordX = 23,
-//            moveCordY = 43
-//        )
+        swipeOnScreen(
+            startCordX = 495,
+            startCordY = 1176,
+            moveCordX = 495,
+            moveCordY = 746
+        )
 
-//        element9 = driver.findElement(MobileBy.id("ru.sportmaster.app.handh.dev:id/buttonLogout"))
-//        element9.click()
+        clickToElement(
+            locatorType = locatorsTypes.id,
+            locator = EditProfileScreenLocators().logoutButtonInEditProfileScreen.androidId
+        )
 
         TimeUnit.SECONDS.sleep(5)
     }

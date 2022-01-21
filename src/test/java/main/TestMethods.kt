@@ -32,12 +32,7 @@ open class TestMethods: BaseClass() {
     }
 
     // Свайп
-    fun swipeOnScreen(
-        startCordX: Int,
-        startCordY: Int,
-        moveCordX: Int,
-        moveCordY: Int
-    ){
+    fun swipeOnScreen(startCordX: Int, startCordY: Int, moveCordX: Int, moveCordY: Int){
         PlatformTouchAction(driver)
         .longPress(PointOption.point(startCordX, startCordY))
             .moveTo(PointOption.point(moveCordX, moveCordY))
