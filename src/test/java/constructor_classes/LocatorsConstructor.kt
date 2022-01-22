@@ -4,6 +4,7 @@ data class LocatorsConstructor constructor(
     val androidAccessibilityId: String = "",
     val androidId: String = "",
     val androidXpath: String = "",
+    val androidText: String = ""
 )
 
 val example = LocatorsConstructor(

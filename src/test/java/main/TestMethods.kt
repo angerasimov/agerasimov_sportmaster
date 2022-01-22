@@ -5,12 +5,14 @@ import io.appium.java_client.MobileBy
 import io.appium.java_client.MobileElement
 import io.appium.java_client.touch.WaitOptions
 import io.appium.java_client.touch.offset.PointOption
+import org.testng.AssertJUnit
 import utils.PlatformTouchAction
 import java.time.Duration
 import java.util.concurrent.TimeUnit
 
 open class TestMethods: BaseClass() {
 
+    // Тап по элементу
     fun clickToElement(locatorType: String, locator: String) {
         lateinit var element: MobileElement
         when (locatorType) {
@@ -21,11 +23,12 @@ open class TestMethods: BaseClass() {
         TimeUnit.SECONDS.sleep(1)
     }
 
+    // Ввод текста в поле
     fun inputTextInField(locatorType: String, locator: String, inputText: String) {
         lateinit var element: MobileElement
         when (locatorType) {
-            "id" -> element = driver.findElement(MobileBy.id(locator))
-            "xpath" -> element = driver.findElement(MobileBy.xpath(locator))
+            locatorsTypes.id -> element = driver.findElement(MobileBy.id(locator))
+            locatorsTypes.xpath -> element = driver.findElement(MobileBy.xpath(locator))
         }
         element.sendKeys(inputText)
         TimeUnit.SECONDS.sleep(1)
@@ -50,5 +53,40 @@ open class TestMethods: BaseClass() {
             .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
             .perform()
     }
+
+    // Очистка поля ввода
+    fun clearField(locatorType: String, locator: String){
+        lateinit var element: MobileElement
+        when (locatorType) {
+            locatorsTypes.id -> element = driver.findElement(MobileBy.id(locator))
+            locatorsTypes.xpath -> element = driver.findElement(MobileBy.xpath(locator))
+        }
+        element.clear()
+    }
+
+    // Проверка доступности элемента на экране
+    fun checkAvailableElement(locatorType: String, locator: String){
+        var checkAvailableElement = false
+        when (locatorType) {
+            locatorsTypes.id -> checkAvailableElement = driver.findElement(MobileBy.id(locator)).isEnabled
+            locatorsTypes.xpath -> checkAvailableElement = driver.findElement(MobileBy.xpath(locator)).isEnabled
+        }
+        AssertJUnit.assertTrue(checkAvailableElement)
+    }
+
+    // Проверка текста в элементе
+    fun checkTextInElement(locatorType: String, locator: String, text: String){
+        lateinit var element: MobileElement
+        var elementAttribute = ""
+        when (locatorType) {
+            locatorsTypes.id -> element = driver.findElement(MobileBy.id(locator))
+            locatorsTypes.xpath -> element = driver.findElement(MobileBy.xpath(locator))
+        }
+        elementAttribute = element.getAttribute("text")
+        AssertJUnit.assertEquals(elementAttribute, text)
+    }
+
+
+
 
 }

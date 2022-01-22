@@ -24,9 +24,28 @@ class TestOne: TestMethods() {
             println("Элемент не найден, тест продолжается")
         }
 
+        // Проверка текста заголовка экрана авторизации
+        checkTextInElement(
+            locatorType = locatorsTypes.id,
+            locator = AuthorizationScreenLocators().textOfTitleInAuthScreen.androidId,
+            text = "ВХОД ИЛИ\n" +
+                    "РЕГИСТРАЦИЯ"
+        )
 
+        // Ввод номера телефона в поле (сначала неправильного)
+        inputTextInField(
+            locatorType = locatorsTypes.id,
+            locator = AuthorizationScreenLocators().inputFieldInAuthScreen.androidId,
+            inputText = "99969"
+        )
 
-        // Ввод номера телефона в поле
+        // Очистка поля номера телефона
+        clearField(
+            locatorType = locatorsTypes.id,
+            locator = AuthorizationScreenLocators().inputFieldInAuthScreen.androidId
+        )
+
+        // Ввод номера телефона в поле (правильного)
         inputTextInField(
             locatorType = locatorsTypes.id,
             locator = AuthorizationScreenLocators().inputFieldInAuthScreen.androidId,
@@ -39,7 +58,20 @@ class TestOne: TestMethods() {
             locator = AuthorizationScreenLocators().getcodeButtonInAuthScreen.androidId
         )
 
-        // Ввод кода
+        // Ввод кода (сначала неправильного)
+        inputTextInField(
+            locatorType = locatorsTypes.id,
+            locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.androidId,
+            inputText = "41"
+        )
+
+        // Очистка поля ввода кода
+        clearField(
+            locatorType = locatorsTypes.id,
+            locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.androidId
+        )
+
+        // Ввод кода (правильного)
         inputTextInField(
             locatorType = locatorsTypes.id,
             locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.androidId,
@@ -70,6 +102,7 @@ class TestOne: TestMethods() {
             locator = ProfileMenuScreenLocators().editButtonOnProfileMenuScreen.androidId
         )
 
+        // Скролл вниз до кноки выхода из профиля
         swipeOnScreen(
             startCordX = 495,
             startCordY = 1176,
@@ -77,9 +110,16 @@ class TestOne: TestMethods() {
             moveCordY = 746
         )
 
+        // Тап по кнопке выхода из профиля
         clickToElement(
             locatorType = locatorsTypes.id,
             locator = EditProfileScreenLocators().logoutButtonInEditProfileScreen.androidId
+        )
+
+        // Проверка доступности кнопки Войти на экране профиля
+        checkAvailableElement(
+            locatorType = locatorsTypes.id,
+            locator = ProfileMenuScreenLocators().loginButtonOnProfileMenuScreen.androidId
         )
 
         TimeUnit.SECONDS.sleep(5)
