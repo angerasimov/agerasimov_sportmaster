@@ -103,11 +103,16 @@ class TestOne: TestMethods() {
         )
 
         // Скролл вниз до кнопки выхода из профиля
-        swipeOnScreen(
-            startCordX = 405,
-            startCordY = 1076,
-            moveCordX = 405,
-            moveCordY = 746
+//        swipeOnScreen(
+//            startCordX = 405,
+//            startCordY = 1076,
+//            moveCordX = 405,
+//            moveCordY = 746
+//        )
+
+        // Скролл вниз (другой способ)
+        scrollToElement(
+            locator = EditProfileScreenLocators().logoutButtonInEditProfileScreen.androidId
         )
 
         // Тап по кнопке выхода из профиля

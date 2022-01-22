@@ -43,6 +43,15 @@ open class TestMethods: BaseClass() {
             .perform()
     }
 
+    // Скролл до определенного элемента
+    fun scrollToElement(locator: String){
+        driver.findElement(MobileBy.AndroidUIAutomator(
+            "new UiScrollable(new UiSelector()" +
+                    ".scrollable(true)).scrollIntoView(new UiSelector()" +
+                    ".resourceIdMatches(\".*$locator.*\"))")
+        )
+    }
+
     // Тап по координатам на экране
     fun tapByCoordinates(
         cordX: Int,
