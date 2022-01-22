@@ -102,11 +102,11 @@ class TestOne: TestMethods() {
             locator = ProfileMenuScreenLocators().editButtonOnProfileMenuScreen.androidId
         )
 
-        // Скролл вниз до кноки выхода из профиля
+        // Скролл вниз до кнопки выхода из профиля
         swipeOnScreen(
-            startCordX = 495,
-            startCordY = 1176,
-            moveCordX = 495,
+            startCordX = 405,
+            startCordY = 1076,
+            moveCordX = 405,
             moveCordY = 746
         )
 
