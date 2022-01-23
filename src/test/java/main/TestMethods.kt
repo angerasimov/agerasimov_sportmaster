@@ -18,6 +18,7 @@ open class TestMethods: BaseClass() {
         when (locatorType) {
             locatorsTypes.id -> element = driver.findElement(MobileBy.id(locator))
             locatorsTypes.xpath -> element = driver.findElement(MobileBy.xpath(locator))
+            locatorsTypes.iOSClassChain -> element = driver.findElement(MobileBy.iOSClassChain(locator))
         }
         element.click()
         TimeUnit.SECONDS.sleep(1)
@@ -29,6 +30,7 @@ open class TestMethods: BaseClass() {
         when (locatorType) {
             locatorsTypes.id -> element = driver.findElement(MobileBy.id(locator))
             locatorsTypes.xpath -> element = driver.findElement(MobileBy.xpath(locator))
+            locatorsTypes.iOSClassChain -> element = driver.findElement(MobileBy.iOSClassChain(locator))
         }
         element.sendKeys(inputText)
         TimeUnit.SECONDS.sleep(1)
@@ -69,6 +71,7 @@ open class TestMethods: BaseClass() {
         when (locatorType) {
             locatorsTypes.id -> element = driver.findElement(MobileBy.id(locator))
             locatorsTypes.xpath -> element = driver.findElement(MobileBy.xpath(locator))
+            locatorsTypes.iOSClassChain -> element = driver.findElement(MobileBy.iOSClassChain(locator))
         }
         element.clear()
     }
@@ -79,6 +82,7 @@ open class TestMethods: BaseClass() {
         when (locatorType) {
             locatorsTypes.id -> checkAvailableElement = driver.findElement(MobileBy.id(locator)).isEnabled
             locatorsTypes.xpath -> checkAvailableElement = driver.findElement(MobileBy.xpath(locator)).isEnabled
+            locatorsTypes.iOSClassChain -> checkAvailableElement = driver.findElement(MobileBy.iOSClassChain(locator)).isEnabled
         }
         AssertJUnit.assertTrue(checkAvailableElement)
     }
@@ -90,12 +94,10 @@ open class TestMethods: BaseClass() {
         when (locatorType) {
             locatorsTypes.id -> element = driver.findElement(MobileBy.id(locator))
             locatorsTypes.xpath -> element = driver.findElement(MobileBy.xpath(locator))
+            locatorsTypes.iOSClassChain -> element = driver.findElement(MobileBy.iOSClassChain(locator))
         }
         elementAttribute = element.getAttribute("text")
         AssertJUnit.assertEquals(elementAttribute, text)
     }
-
-
-
 
 }

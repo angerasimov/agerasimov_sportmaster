@@ -4,6 +4,7 @@ import constructor_classes.LocatorsConstructor
 
 class EditProfileScreenLocators {
     val logoutButtonInEditProfileScreen = LocatorsConstructor(
-        androidId = "ru.sportmaster.app.handh.dev:id/buttonLogout"
+        androidId = "ru.sportmaster.app.handh.dev:id/buttonLogout",
+        iOSClassChain = "**/XCUIElementTypeButton[`label == \"Выйти из профиля\"`]"
     )
 }

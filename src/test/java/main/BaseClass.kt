@@ -5,6 +5,7 @@ import io.appium.java_client.MobileBy
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.remote.AndroidMobileCapabilityType
+import io.appium.java_client.remote.IOSMobileCapabilityType
 import io.appium.java_client.remote.MobileCapabilityType
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.testng.annotations.AfterSuite
@@ -35,6 +36,7 @@ open class BaseClass {
         caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,"ru.sportmaster.app.presentation.start.StartActivity") // название активити
         caps.setCapability(MobileCapabilityType.UDID,"PT89572AA1A60800280")
         //caps.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true)
+        //caps.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, true) 
 
         driver = AndroidDriver(url, caps) // установка драйвера и приложения на андроид устройство
 
