@@ -11,7 +11,7 @@ class AuthorizationScreenLocators {
 
     val inputFieldInAuthScreen = LocatorsConstructor(
         androidId = "ru.sportmaster.app.handh.dev:id/editTextPhone",
-        iOSClassChain = "**/XCUIElementTypeTextField[`value == \"Номер телефона\"`]"
+        iOSClassChain = "**/XCUIElementTypeOther[`name == \"editTextPhone\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField"
     )
 
     val getcodeButtonInAuthScreen = LocatorsConstructor(
