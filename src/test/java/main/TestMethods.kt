@@ -88,7 +88,7 @@ open class TestMethods: BaseClass() {
     }
 
     // Проверка текста в элементе
-    fun checkTextInElement(locatorType: String, locator: String, text: String){
+    fun checkTextInElement(locatorType: String, locator: String, text: String, name: String){
         lateinit var element: MobileElement
         var elementAttribute = ""
         when (locatorType) {
@@ -97,7 +97,15 @@ open class TestMethods: BaseClass() {
             locatorsTypes.iOSClassChain -> element = driver.findElement(MobileBy.iOSClassChain(locator))
         }
         elementAttribute = element.getAttribute("text")
-        AssertJUnit.assertEquals(elementAttribute, text)
+        var paramPlatformName = ""
+        when (paramPlatformName) {
+            "iOS" -> {
+                AssertJUnit.assertEquals(elementAttribute, name)
+            }
+            "Android" -> {
+                AssertJUnit.assertEquals(elementAttribute, text)
+            }
+        }
     }
 
 }

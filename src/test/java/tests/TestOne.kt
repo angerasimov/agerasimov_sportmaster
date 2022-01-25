@@ -13,103 +13,193 @@ class TestOne: TestMethods() {
     @Test
     fun testOne(){
 
+        var paramPlatformName = ""
+
         //описать логику, нужен ли нам авторизованный пользователь
 
+        // Тап на крестик в онбординге
         try {
-            //нажатие на крестик в онбординге
-            clickToElement(
-                //locatorType = locatorsTypes.xpath,
-                locatorType = locatorsTypes.iOSClassChain,
-                //locator = SplashScreenLocators().exitButtonOnSplashScreen.androidXpath
-                locator = SplashScreenLocators().exitButtonOnSplashScreen.iOSClassChain
-            )
+            when(paramPlatformName){
+                "iOS" -> {
+                    clickToElement(
+                        locatorType = locatorsTypes.iOSClassChain,
+                        locator = SplashScreenLocators().exitButtonOnSplashScreen.iOSClassChain
+                    )
+                }
+                "Android" -> {
+                    clickToElement(
+                        locatorType = locatorsTypes.xpath,
+                        locator = SplashScreenLocators().exitButtonOnSplashScreen.androidXpath
+                    )
+                }
+            }
         } catch (e: org.openqa.selenium.NoSuchElementException) {
             println("Элемент не найден, тест продолжается")
         }
 
         // Проверка текста заголовка экрана авторизации
-//        checkTextInElement(
-//            //locatorType = locatorsTypes.id,
-//            locatorType = locatorsTypes.iOSClassChain,
-//            //locator = AuthorizationScreenLocators().textOfTitleInAuthScreen.androidId,
-//            locator = AuthorizationScreenLocators().textOfTitleInAuthScreen.iOSClassChain,
-//            text = "ВХОД ИЛИ\n" +
-//                    "РЕГИСТРАЦИЯ"
-//        )
+        when(paramPlatformName){
+            "iOS" -> {
+                checkTextInElement(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = AuthorizationScreenLocators().textOfTitleInAuthScreen.iOSClassChain,
+                    text = "",
+                    name = "ВХОД ИЛИ\n" +
+                            "РЕГИСТРАЦИЯ"
+                )
+            }
+            "Android" -> {
+                checkTextInElement(
+                    locatorType = locatorsTypes.id,
+                    locator = AuthorizationScreenLocators().textOfTitleInAuthScreen.androidId,
+                    text = "ВХОД ИЛИ\n" +
+                            "РЕГИСТРАЦИЯ",
+                    name = ""
+                )
+            }
+        }
 
+//        //нужно ли кликать в айос?
 //        clickToElement(
 //            locatorType = locatorsTypes.iOSClassChain,
 //            locator = AuthorizationScreenLocators().inputFieldInAuthScreen.iOSClassChain
 //        )
 
         // Ввод номера телефона в поле (сначала неправильного)
-        inputTextInField(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = AuthorizationScreenLocators().inputFieldInAuthScreen.androidId,
-            locator = AuthorizationScreenLocators().inputFieldInAuthScreen.iOSClassChain,
-            inputText = "99969"
-        )
-
+        when(paramPlatformName){
+            "iOS" -> {
+                inputTextInField(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = AuthorizationScreenLocators().inputFieldInAuthScreen.iOSClassChain,
+                    inputText = "99969"
+                )
+            }
+            "Android" -> {
+                inputTextInField(
+                    locatorType = locatorsTypes.id,
+                    locator = AuthorizationScreenLocators().inputFieldInAuthScreen.androidId,
+                    inputText = "99969"
+                )
+            }
+        }
 
         // Очистка поля номера телефона
-        clearField(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = AuthorizationScreenLocators().inputFieldInAuthScreen.androidId
-            locator = AuthorizationScreenLocators().inputFieldInAuthScreen.iOSClassChain
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                clearField(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = AuthorizationScreenLocators().inputFieldInAuthScreen.iOSClassChain
+                )
+            }
+            "Android" -> {
+                clearField(
+                    locatorType = locatorsTypes.id,
+                    locator = AuthorizationScreenLocators().inputFieldInAuthScreen.androidId
+                )
+            }
+        }
 
         // Ввод номера телефона в поле (правильного)
-        inputTextInField(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = AuthorizationScreenLocators().inputFieldInAuthScreen.androidId,
-            locator = AuthorizationScreenLocators().inputFieldInAuthScreen.iOSClassChain,
-            inputText = "9999999969"
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                inputTextInField(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = AuthorizationScreenLocators().inputFieldInAuthScreen.iOSClassChain,
+                    inputText = "9999999969"
+                )
+            }
+            "Android" -> {
+                inputTextInField(
+                    locatorType = locatorsTypes.id,
+                    locator = AuthorizationScreenLocators().inputFieldInAuthScreen.androidId,
+                    inputText = "9999999969"
+                )
+            }
+        }
 
         // Клик по кнопке авторизации
-        clickToElement(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = AuthorizationScreenLocators().getcodeButtonInAuthScreen.androidId
-            locator = AuthorizationScreenLocators().getcodeButtonInAuthScreen.iOSClassChain
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                clickToElement(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = AuthorizationScreenLocators().getcodeButtonInAuthScreen.iOSClassChain
+                )
+            }
+            "Android" -> {
+                clickToElement(
+                    locatorType = locatorsTypes.id,
+                    locator = AuthorizationScreenLocators().getcodeButtonInAuthScreen.androidId
+                )
+            }
+        }
 
         // Ввод кода (сначала неправильного)
-        inputTextInField(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.androidId,
-            locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.iOSClassChain,
-            inputText = "41"
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                inputTextInField(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.iOSClassChain,
+                    inputText = "41"
+                )
+            }
+            "Android" -> {
+                inputTextInField(
+                    locatorType = locatorsTypes.id,
+                    locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.androidId,
+                    inputText = "41"
+                )
+            }
+        }
 
         // Очистка поля ввода кода
-        clearField(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.androidId
-            locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.iOSClassChain
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                clearField(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.iOSClassChain
+                )
+            }
+            "Android" -> {
+                clearField(
+                    locatorType = locatorsTypes.id,
+                    locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.androidId
+                )
+            }
+        }
 
         // Ввод кода (правильного)
-        inputTextInField(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.androidId,
-            locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.iOSClassChain,
-            inputText = "1111"
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                inputTextInField(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.iOSClassChain,
+                    inputText = "1111"
+                )
+            }
+            "Android" -> {
+                inputTextInField(
+                    locatorType = locatorsTypes.id,
+                    locator = CodeFromSmsScreenLocators().inputFieldForSmsCode.androidId,
+                    inputText = "1111"
+                )
+            }
+        }
 
         // Даем добро на местоположение
-        clickToElement(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = PermissionsLocators().whenUsingAppButtonInPermissionGeolocation.androidId,
-            locator = PermissionsLocators().whenUsingAppButtonInPermissionGeolocation.iOSClassChain
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                clickToElement(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = PermissionsLocators().whenUsingAppButtonInPermissionGeolocation.iOSClassChain
+                )
+            }
+            "Android" -> {
+                clickToElement(
+                    locatorType = locatorsTypes.id,
+                    locator = PermissionsLocators().whenUsingAppButtonInPermissionGeolocation.androidId
+                )
+            }
+        }
 
         // Подтверждение города
 //        clickToElement(
@@ -129,20 +219,36 @@ class TestOne: TestMethods() {
         )
 
         // Переход по табу в меню профиля
-        clickToElement(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = NavbarLocators().profileTab.androidId
-            locator = NavbarLocators().profileTab.iOSClassChain
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                clickToElement(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = NavbarLocators().profileTab.iOSClassChain
+                )
+            }
+            "Android" -> {
+                clickToElement(
+                    locatorType = locatorsTypes.id,
+                    locator = NavbarLocators().profileTab.androidId
+                )
+            }
+        }
 
         // Переход в редактирование профиля
-        clickToElement(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = ProfileMenuScreenLocators().editButtonOnProfileMenuScreen.androidId
-            locator = ProfileMenuScreenLocators().editButtonOnProfileMenuScreen.iOSClassChain
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                clickToElement(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = ProfileMenuScreenLocators().editButtonOnProfileMenuScreen.iOSClassChain
+                )
+            }
+            "Android" -> {
+                clickToElement(
+                    locatorType = locatorsTypes.id,
+                    locator = ProfileMenuScreenLocators().editButtonOnProfileMenuScreen.androidId
+                )
+            }
+        }
 
         // Скролл вниз до кнопки выхода из профиля
 //        swipeOnScreen(
@@ -158,20 +264,36 @@ class TestOne: TestMethods() {
 //        )
 
         // Тап по кнопке выхода из профиля
-        clickToElement(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = EditProfileScreenLocators().logoutButtonInEditProfileScreen.androidId
-            locator = EditProfileScreenLocators().logoutButtonInEditProfileScreen.iOSClassChain
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                clickToElement(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = EditProfileScreenLocators().logoutButtonInEditProfileScreen.iOSClassChain
+                )
+            }
+            "Android" -> {
+                clickToElement(
+                    locatorType = locatorsTypes.id,
+                    locator = EditProfileScreenLocators().logoutButtonInEditProfileScreen.androidId
+                )
+            }
+        }
 
         // Проверка доступности кнопки Войти на экране профиля
-        checkAvailableElement(
-            //locatorType = locatorsTypes.id,
-            locatorType = locatorsTypes.iOSClassChain,
-            //locator = ProfileMenuScreenLocators().loginButtonOnProfileMenuScreen.androidId
-            locator = ProfileMenuScreenLocators().loginButtonOnProfileMenuScreen.iOSClassChain
-        )
+        when(paramPlatformName){
+            "iOS" -> {
+                checkAvailableElement(
+                    locatorType = locatorsTypes.iOSClassChain,
+                    locator = ProfileMenuScreenLocators().loginButtonOnProfileMenuScreen.iOSClassChain
+                )
+            }
+            "Android" -> {
+                checkAvailableElement(
+                    locatorType = locatorsTypes.id,
+                    locator = ProfileMenuScreenLocators().loginButtonOnProfileMenuScreen.androidId
+                )
+            }
+        }
 
         TimeUnit.SECONDS.sleep(5)
     }

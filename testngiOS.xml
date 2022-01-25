@@ -4,8 +4,8 @@
     <parameter name="paramPlatformName" value="iOS"/>
     <parameter name="paramPlatformVersion" value="15.0"/>
     <parameter name="paramDeviceName" value="iPhone 11"/>
-    <parameter name="paramUDID" value=""/>
     <parameter name="paramTimeToDelay" value="6"/>
+    <parameter name="paramUDID" value=""/>
     <test verbose="2" preserve-order="true" name="iOS tests" parallel="none">
         <classes>
             <class name="tests.TestOne">
